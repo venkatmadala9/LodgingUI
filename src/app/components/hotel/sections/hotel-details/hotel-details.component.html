@@ -1,0 +1,28 @@
+<p>hotel-details works!</p>
+
+<div *ngIf="hotel" class="hotels">
+    <h2>{{hotel.name | uppercase}} Details</h2>
+    <div><span>Id: </span>{{hotel.oid}}</div>
+    
+    <div><span>Facility Code: </span>{{hotel.facilityCode}}</div>
+    <div><span>Hotel Number: </span>{{hotel.hotelNumber}}</div>
+    <div><span>Hotel Rooms: </span>{{hotel.hotelRooms}}</div>
+
+    <!-- <div><span>Address: </span></div>
+    <div><span>Street: </span>{{hotel.address.street}}</div>
+    <div><span>City: </span>{{hotel.address.city}}</div>
+    <div><span>State: </span>{{hotel.address.state}}</div>
+    <div><span>zipcode: </span>{{hotel.address.zipcode}}</div> -->
+    
+    <div>
+      <button routerLink="/hotels/add">
+        Add New Hotel
+      </button>
+    </div>
+
+    <div>
+      <button routerLink="/hotels">
+        Go back to List
+      </button>
+    </div>
+  </div>

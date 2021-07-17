@@ -1,0 +1,18 @@
+<h2>Hotel List</h2>
+
+<div>
+   <button (click)="addHotel()">
+     Add
+   </button>
+ </div>
+
+
+<ul class="hotels">
+  <li *ngFor="let p of hotels; let i = index;">
+      <a routerLink="/hotels/detail/{{p.oid}}">{{i+1}}
+        {{p.name}}
+      </a>
+      <button class="delete" title="delete product"
+      (click)="delete(p.oid)">x</button>
+   </li>
+</ul>
