@@ -1,28 +1,42 @@
 <p>hotel-details works!</p>
 
-<div *ngIf="hotel" class="hotels">
-    <h2>{{hotel.name | uppercase}} Details</h2>
-    <div><span>Id: </span>{{hotel.oid}}</div>
-    
-    <div><span>Facility Code: </span>{{hotel.facilityCode}}</div>
-    <div><span>Hotel Number: </span>{{hotel.hotelNumber}}</div>
-    <div><span>Hotel Rooms: </span>{{hotel.hotelRooms}}</div>
+<ul class="hotels">
+  <li *ngFor="let p of hotelsList; let i = index;">
+    <!-- <a routerLink="/hotels/detail/{{p.oid}}">{{i+1}}
+      {{p.name}}
+    </a> -->
+    <span>
+      <strong (click)="getDetails(p.oid)">
+        <span class="link-css">{{i+1}} {{p.name}}</span>
+      </strong>
+    </span>
+    <button class="delete" title="delete product" (click)="deleteHotel(p.oid)">x</button>
+  </li>
+</ul>
 
-    <!-- <div><span>Address: </span></div>
+<div *ngIf="hotel" class="hotels">
+  <h2>{{hotel.name | uppercase}} Details</h2>
+  <div><span>Id: </span>{{hotel.oid}}</div>
+
+  <div><span>Facility Code: </span>{{hotel.facilityCode}}</div>
+  <div><span>Hotel Number: </span>{{hotel.hotelNumber}}</div>
+  <div><span>Hotel Rooms: </span>{{hotel.hotelRooms}}</div>
+
+  <!-- <div><span>Address: </span></div>
     <div><span>Street: </span>{{hotel.address.street}}</div>
     <div><span>City: </span>{{hotel.address.city}}</div>
     <div><span>State: </span>{{hotel.address.state}}</div>
     <div><span>zipcode: </span>{{hotel.address.zipcode}}</div> -->
-    
-    <div>
-      <button routerLink="/hotels/add">
-        Add New Hotel
-      </button>
-    </div>
 
-    <div>
-      <button routerLink="/hotels">
-        Go back to List
-      </button>
-    </div>
+  <div>
+    <button routerLink="/hotels/add">
+      Add New Hotel
+    </button>
   </div>
+
+  <div>
+    <button routerLink="/hotels">
+      Go back to List
+    </button>
+  </div>
+</div>

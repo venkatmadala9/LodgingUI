@@ -9,19 +9,19 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./hotel-add.component.css']
 })
 export class HotelAddComponent implements OnInit {
-@Output() add : EventEmitter<any> = new EventEmitter();
+  @Output() add: EventEmitter<any> = new EventEmitter();
   hotelForm = new FormGroup(
     {
-      name: new FormControl(''),
-      hotelRooms: new FormControl(''),
-      hotelNumber: new FormControl(''),
-      facilityCode: new FormControl(''),
+      name: new FormControl('Swagath'),
+      hotelRooms: new FormControl('2'),
+      hotelNumber: new FormControl('205'),
+      facilityCode: new FormControl('52646'),
       address: new FormGroup(
         {
-          street: new FormControl(''),
-          city: new FormControl(''),
-          state: new FormControl(''),
-          zipcode: new FormControl(''),
+          street: new FormControl('Kukatpally'),
+          city: new FormControl('Hyderabad'),
+          state: new FormControl('Telangana'),
+          zipcode: new FormControl('500090'),
         }
       )
     }
@@ -50,13 +50,7 @@ export class HotelAddComponent implements OnInit {
     this.addHotel(this.hotelForm.value);
   }
 
-  addHotel(hotelForm:any): void {
+  addHotel(hotelForm: any): void {
     this.add.emit(hotelForm);
-    this.rest.addHotel(hotelForm).subscribe((result) => {
-      this.router.navigate(['/hotels/detail/' + result.oid]);
-    }, (err) => {
-      console.log(err);
-    }
-    );
   }
 }

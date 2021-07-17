@@ -1,18 +1,17 @@
 <h2>Hotel List</h2>
 
+<div class="row" *ngIf="addSucess">
+  <div class="col-xs-12">
+    <p class="alert alert-success">
+      <strong>Successfully Created Hotel!</strong>
+    </p>
+  </div>
+</div>
+
 <div>
-   <button (click)="addHotel()">
-     Add
-   </button>
- </div>
+  <button (click)="hotelAction('add')">Add</button>
+</div>
 
 
-<ul class="hotels">
-  <li *ngFor="let p of hotels; let i = index;">
-      <a routerLink="/hotels/detail/{{p.oid}}">{{i+1}}
-        {{p.name}}
-      </a>
-      <button class="delete" title="delete product"
-      (click)="delete(p.oid)">x</button>
-   </li>
-</ul>
+<create-hotel *ngIf="createHotel" (add)="addHotel($event)"></create-hotel>
+<hotel-details *ngIf="hotels.length" [hotelsList]="hotels" (delete)="delete($event)"></hotel-details>
